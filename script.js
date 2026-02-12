@@ -3,14 +3,19 @@ const burgerBtn = document.getElementById('burger-btn');
 const navMenu = document.getElementById('nav-menu');
 
 if (burgerBtn && navMenu) {
-    burgerBtn.addEventListener('click', () => {
+    console.log('Burger menu initialized');
+    
+    burgerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        console.log('Burger clicked');
         burgerBtn.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
     // Close menu when clicking on a link
-    navMenu.querySelectorAll('a, button').forEach(item => {
+    navMenu.querySelectorAll('a, .btn-book').forEach(item => {
         item.addEventListener('click', () => {
+            console.log('Menu item clicked');
             burgerBtn.classList.remove('active');
             navMenu.classList.remove('active');
         });
@@ -18,11 +23,14 @@ if (burgerBtn && navMenu) {
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.header')) {
+        if (navMenu.classList.contains('active') && !e.target.closest('.header')) {
+            console.log('Clicked outside');
             burgerBtn.classList.remove('active');
             navMenu.classList.remove('active');
         }
     });
+} else {
+    console.error('Burger menu elements not found');
 }
 
 // Smooth navigation
