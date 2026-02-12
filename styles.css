@@ -126,11 +126,10 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    transition: opacity 0.3s ease;
 }
 
 .burger-btn.active span {
-    opacity: 0;
+    display: none;
 }
 
 .burger-btn.active .close-icon {
