@@ -64,6 +64,11 @@ body.menu-open {
     color: var(--primary);
     flex-shrink: 0;
     z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.logo.logo-white {
+    color: white;
 }
 
 .nav {
@@ -339,6 +344,11 @@ body.menu-open {
 
     .header-content {
         gap: 2rem;
+    }
+
+    .logo,
+    .logo.logo-white {
+        color: var(--primary);
     }
 
     .nav {
