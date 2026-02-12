@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const burgerBtn = document.getElementById('burger-btn');
     const navMenu = document.getElementById('nav-menu');
+    const logo = document.querySelector('.logo');
 
     if (burgerBtn && navMenu) {
         console.log('✅ Burger menu elements found');
@@ -15,6 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.toggle('active');
             const expanded = burgerBtn.classList.contains('active');
             burgerBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            
+            // Изменение цвета логотипа
+            if (logo) {
+                logo.classList.toggle('logo-white', expanded);
+            }
             
             // Блокировка прокрутки при открытом меню
             if (expanded) {
@@ -32,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 burgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
                 burgerBtn.setAttribute('aria-expanded', 'false');
+                if (logo) logo.classList.remove('logo-white');
                 document.body.style.overflow = '';
             });
         });
@@ -44,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 burgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
                 burgerBtn.setAttribute('aria-expanded', 'false');
+                if (logo) logo.classList.remove('logo-white');
                 document.body.style.overflow = '';
             });
         }
@@ -56,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     burgerBtn.classList.remove('active');
                     navMenu.classList.remove('active');
                     burgerBtn.setAttribute('aria-expanded', 'false');
+                    if (logo) logo.classList.remove('logo-white');
                     document.body.style.overflow = '';
                 }
             }
@@ -68,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 burgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
                 burgerBtn.setAttribute('aria-expanded', 'false');
+                if (logo) logo.classList.remove('logo-white');
                 document.body.style.overflow = '';
             }
         });
