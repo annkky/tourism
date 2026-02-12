@@ -107,6 +107,7 @@ body {
     gap: 5px;
     padding: 0;
     z-index: 1001;
+    position: relative;
 }
 
 .burger-btn span {
@@ -117,16 +118,23 @@ body {
     transition: all 0.3s ease;
 }
 
-.burger-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
+.burger-btn .close-icon {
+    display: none;
+    font-size: 28px;
+    color: var(--primary);
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
 }
 
-.burger-btn.active span:nth-child(2) {
+.burger-btn.active span {
     opacity: 0;
 }
 
-.burger-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+.burger-btn.active .close-icon {
+    display: block;
 }
 
 /* ============ MOBILE MENU STYLES ============ */
