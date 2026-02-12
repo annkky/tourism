@@ -1,3 +1,30 @@
+// Burger Menu Toggle
+const burgerBtn = document.getElementById('burger-btn');
+const navMenu = document.getElementById('nav-menu');
+
+if (burgerBtn && navMenu) {
+    burgerBtn.addEventListener('click', () => {
+        burgerBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a, button').forEach(item => {
+        item.addEventListener('click', () => {
+            burgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.header')) {
+            burgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
 // Smooth navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
