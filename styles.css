@@ -64,7 +64,7 @@ body {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    width: 100%;
+    width: calc(100% - 4rem);
     padding: 0 2rem;
 }
 
@@ -73,6 +73,7 @@ body {
     color: var(--text);
     font-weight: 500;
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -88,6 +89,7 @@ body {
     cursor: pointer;
     font-weight: 600;
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .btn-book:hover {
@@ -131,6 +133,7 @@ body {
 @media (max-width: 768px) {
     .header-content {
         padding: 0.75rem 1rem;
+        width: 100%;
     }
 
     .logo {
@@ -152,11 +155,12 @@ body {
         gap: 0;
         padding: 0;
         margin: 0;
+        max-width: 100%;
         border-top: 1px solid #e0e0e0;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
+        transition: max-height 0.35s ease-out;
     }
 
     .nav.active {
@@ -171,6 +175,7 @@ body {
         text-decoration: none;
         font-weight: 500;
         transition: background 0.2s;
+        white-space: normal;
     }
 
     .nav-link:hover,
@@ -183,6 +188,7 @@ body {
         width: calc(100% - 3rem);
         margin: 1rem 1.5rem;
         padding: 0.9rem;
+        border-radius: 8px;
     }
 }
 
