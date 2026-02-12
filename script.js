@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.toggle('active');
             const expanded = burgerBtn.classList.contains('active');
             burgerBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            
+            // Блокировка прокрутки при открытом меню
+            if (expanded) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // Close menu when clicking nav links
@@ -24,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('📍 Nav link clicked');
                 burgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
         });
 
@@ -34,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('📘 Book button clicked');
                 burgerBtn.classList.remove('active');
                 navMenu.classList.remove('active');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
         }
 
@@ -44,7 +55,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('❌ Clicked outside - closing menu');
                     burgerBtn.classList.remove('active');
                     navMenu.classList.remove('active');
+                    burgerBtn.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
                 }
+            }
+        });
+
+        // Close menu when pressing Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                console.log('⌨️ Escape pressed - closing menu');
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             }
         });
     } else {
