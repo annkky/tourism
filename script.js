@@ -1,37 +1,54 @@
-// Burger Menu Toggle
-const burgerBtn = document.getElementById('burger-btn');
-const navMenu = document.getElementById('nav-menu');
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burger-btn');
+    const navMenu = document.getElementById('nav-menu');
 
-if (burgerBtn && navMenu) {
-    console.log('Burger menu initialized');
-    
-    burgerBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        console.log('Burger clicked');
-        burgerBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close menu when clicking on a link
-    navMenu.querySelectorAll('a, .btn-book').forEach(item => {
-        item.addEventListener('click', () => {
-            console.log('Menu item clicked');
-            burgerBtn.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (burgerBtn && navMenu) {
+        console.log('✅ Burger menu elements found');
+        
+        // Toggle menu on burger click
+        burgerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🍔 Burger clicked - toggling menu');
+            burgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-    });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (navMenu.classList.contains('active') && !e.target.closest('.header')) {
-            console.log('Clicked outside');
-            burgerBtn.classList.remove('active');
-            navMenu.classList.remove('active');
+        // Close menu when clicking nav links
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('📍 Nav link clicked');
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking book button
+        const bookBtn = navMenu.querySelector('.btn-book');
+        if (bookBtn) {
+            bookBtn.addEventListener('click', function() {
+                console.log('📘 Book button clicked');
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         }
-    });
-} else {
-    console.error('Burger menu elements not found');
-}
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('active')) {
+                if (!e.target.closest('header') && !e.target.closest('#nav-menu')) {
+                    console.log('❌ Clicked outside - closing menu');
+                    burgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    } else {
+        console.error('❌ Burger menu elements NOT found!');
+    }
+});
 
 // Smooth navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
