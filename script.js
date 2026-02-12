@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('🍔 Burger clicked - toggling menu');
             burgerBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
+            const expanded = burgerBtn.classList.contains('active');
+            burgerBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         });
 
         // Close menu when clicking nav links
